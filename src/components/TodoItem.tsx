@@ -1,5 +1,9 @@
-export const TodoItem:React.FC<{text: string}> = (props) => {
+import React from 'react'
+
+const TodoItem: React.FC<{todoText: string}> = (props) => {
   return (
-    <li>{props.text}</li>
-   )
- }
+    <li key={props.todoText}>{props.todoText}</li>
+  )
+}
+
+export default TodoItem

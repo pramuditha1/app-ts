@@ -1,26 +1,22 @@
-import { FC,  useRef  } from 'react'
+import React, { useRef } from 'react'
 
-interface IProps {
-    text: string
-}
-
-export const NewTodo:FC<IProps> = (props) => {
-    const todoTextInputRef = useRef<HTMLInputElement>(null);
+const NewTodo: React.FC<{ onAddTodo: (TodoText: string) => void }> = (props) => {
+    // define the type os onAddTodo function: it accepts string parameter and return type is void
+    const inputElementRef = useRef<HTMLInputElement>(null)
     const submitHandler = (event: React.FormEvent) => {
         event.preventDefault();
-        const text = todoTextInputRef.current!.value;
+        const enteredTodoText = inputElementRef.current?.value;
 
-        if(text.trim().length === 0) {
-            //throw new Error
-            return;
-        }
+        if (enteredTodoText?.trim().length === 0) { return; }
+        props.onAddTodo(enteredTodoText.trim())
     }
+    return (
+        <form onSubmit={submitHandler}>
+            <label>Todo</label>
+            <input type="text" id='text' ref={inputElementRef} />
+            <button type="submit">Add todo</button>
+        </form>
+    )
+}
 
-  return (
-    <form onSubmit={submitHandler}>
-        <label htmlFor='text'>Todo text</label>
-        <input type="text" id='text' placeholder="Todo text" ref={todoTextInputRef}/>
-        <button>Add todo</button>
-    </form>
-   )
- }
+export default NewTodo

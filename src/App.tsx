@@ -1,16 +1,19 @@
 import './App.css';
-import Todos from './components/todos';
-import Todo from './models/todo';
-
+import NewTodo from './components/NewTodo';
+import Todos from './components/Todos';
+import Todo from './models/Todo';
 function App() {
-
   const todos = [
-    new Todo('Learn React'),
-    new Todo('Learn Typescript')
+    new Todo("Learn react"),
+    new Todo("Learn typescript")
   ]
 
+  const addTodoHandler = (todoText: string) => {
+
+  }
   return (
-    <div className="App">
+    <div>
+      <NewTodo onAddTodo={addTodoHandler}/>
       <Todos items={todos}/>
     </div>
   );
