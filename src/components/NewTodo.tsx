@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 
-const NewTodo: React.FC<{ onAddTodo: (TodoText: string) => void }> = (props) => {
+const NewTodo: React.FC<{ onAddTodo: (TodoText?: string) => void }> = (props) => {
     // define the type os onAddTodo function: it accepts string parameter and return type is void
     const inputElementRef = useRef<HTMLInputElement>(null)
     const submitHandler = (event: React.FormEvent) => {
@@ -8,7 +8,7 @@ const NewTodo: React.FC<{ onAddTodo: (TodoText: string) => void }> = (props) => 
         const enteredTodoText = inputElementRef.current?.value;
 
         if (enteredTodoText?.trim().length === 0) { return; }
-        props.onAddTodo(enteredTodoText.trim())
+        props.onAddTodo(enteredTodoText)
     }
     return (
         <form onSubmit={submitHandler}>
