@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import NewTodo from './components/NewTodo';
-import Todos from './components/Todos';
+import Todos from './components/todos';
 import Todo from './models/todo';
 
 function App() {
